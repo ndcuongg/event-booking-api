@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/ndcuongg/event-booking-api.git/models"
+	"github.com/ndcuongg/event-booking-api.git/utils"
 )
 
 func signup(context *gin.Context) {
@@ -35,5 +36,12 @@ func login(context *gin.Context) {
 		context.JSON(http.StatusUnauthorized, gin.H{"message": "Couldn't authenticate user!"})
 		return
 	}
-	context.JSON(http.StatusOK, gin.H{"message": "Login successful!"})
+
+	token, err := utils.GenerateToken(user.Email, user.ID)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Couldn't generate token for user!"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"message": "Login successful!", "token": token})
 }
