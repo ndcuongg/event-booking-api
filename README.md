@@ -4,13 +4,13 @@ A REST API for managing events that allows users to sign up, log in, create/mana
 
 ## Tech Stack
 
-| Component        | Technology                              |
-| ---------------- | --------------------------------------- |
-| Language         | Go 1.25+                                |
-| Web framework    | [Gin](https://github.com/gin-gonic/gin) |
-| Database         | SQLite (`github.com/mattn/go-sqlite3`)  |
-| Authentication   | JWT (`github.com/golang-jwt/jwt/v5`)    |
-| Password hashing | bcrypt (`golang.org/x/crypto`)          |
+| Component        | Technology                               |
+| ---------------- | ---------------------------------------- |
+| Language         | Go 1.25+                                 |
+| Web framework    | [Gin](https://github.com/gin-gonic/gin)   |
+| Database         | SQLite (`github.com/mattn/go-sqlite3`) |
+| Authentication   | JWT (`github.com/golang-jwt/jwt/v5`)   |
+| Password hashing | bcrypt (`golang.org/x/crypto`)         |
 
 ## Prerequisites
 
@@ -60,22 +60,22 @@ go build -o bin/server main.go
 
 ### Public
 
-| Method | Endpoint      | Description                       |
-| ------ | ------------- | --------------------------------- |
-| POST   | `/signup`     | Create a new account              |
-| POST   | `/login`      | Log in and receive a JWT token    |
-| GET    | `/events`     | List all events                   |
-| GET    | `/events/:id` | Get details of a single event     |
+| Method | Endpoint        | Description                    |
+| ------ | --------------- | ------------------------------ |
+| POST   | `/signup`     | Create a new account           |
+| POST   | `/login`      | Log in and receive a JWT token |
+| GET    | `/events`     | List all events                |
+| GET    | `/events/:id` | Get details of a single event  |
 
 ### Requires authentication (Header `Authorization: <token>`)
 
-| Method | Endpoint                   | Description                    |
-| ------ | -------------------------- | ------------------------------ |
-| POST   | `/events`                  | Create a new event             |
-| PUT    | `/events/:id`              | Update an event                |
-| DELETE | `/events/:id`              | Delete an event                |
-| POST   | `/events/:id/register`     | Register for an event          |
-| DELETE | `/events/:id/cancel`       | Cancel event registration      |
+| Method | Endpoint                 | Description               |
+| ------ | ------------------------ | ------------------------- |
+| POST   | `/events`              | Create a new event        |
+| PUT    | `/events/:id`          | Update an event           |
+| DELETE | `/events/:id`          | Delete an event           |
+| POST   | `/events/:id/register` | Register for an event     |
+| DELETE | `/events/:id/cancel`   | Cancel event registration |
 
 ### Examples
 
