@@ -2,7 +2,10 @@ module github.com/ndcuongg/event-booking-api.git
 
 go 1.25.6
 
-require github.com/gin-gonic/gin v1.12.0
+require (
+	github.com/gin-gonic/gin v1.12.0
+	github.com/mattn/go-sqlite3 v1.14.50
+)
 
 require (
 	github.com/bytedance/gopkg v0.1.3 // indirect
