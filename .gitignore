@@ -1,0 +1,47 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/bin/
+/build/
+/out/
+
+# Test
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Dependency directories
+/vendor/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.sql.gz
+data/
+
+# IDE / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Air (hot reload)
+tmp/
