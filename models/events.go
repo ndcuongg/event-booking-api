@@ -24,12 +24,10 @@ func (e Event) Save() error {
 		return err
 	}
 	defer stmt.Close()
-	res, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
+	_, err = stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	if err != nil {
 		return err
 	}
-	id, err := res.LastInsertId()
-	e.ID = id
 	return err
 }
 
@@ -79,7 +77,7 @@ func (e Event) UpdateEvent() error {
 	return err
 }
 
-func (e *Event) DeleteEvent() error {
+func (e Event) DeleteEvent() error {
 	query := "DELETE FROM events WHERE id = ?"
 	stmt, err := db.DB.Prepare(query)
 	if err != nil {

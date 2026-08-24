@@ -1,6 +1,9 @@
 package models
 
-import "github.com/ndcuongg/event-booking-api.git/db"
+import (
+	"github.com/ndcuongg/event-booking-api.git/db"
+	"github.com/ndcuongg/event-booking-api.git/utils"
+)
 
 type User struct {
 	ID       int64  `json:"id"`
@@ -18,11 +21,13 @@ func (u User) Save() error {
 		return err
 	}
 	defer stmt.Close()
-	res, err := stmt.Exec(u.Email, u.Password)
+	hashedPasword, err := utils.HashPassword(u.Password)
 	if err != nil {
 		return err
 	}
-	id, err := res.LastInsertId()
-	u.ID = id
+	_, err = stmt.Exec(u.Email, hashedPasword)
+	if err != nil {
+		return err
+	}
 	return err
 }
